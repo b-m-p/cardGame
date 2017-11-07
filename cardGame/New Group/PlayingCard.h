@@ -12,4 +12,10 @@
 
 @property (strong, nonatomic) NSString *suit;
 @property (nonatomic) NSUInteger rank;
+
+//making the class method public by placing it in the header file:
++(NSArray *)validSuits;
+
++(NSUInteger)maxRank;
+
 @end
