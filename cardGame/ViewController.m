@@ -7,14 +7,25 @@
 //
 
 #import "ViewController.h"
+#import "PlayingCardDeck.h"
+#import "Deck.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
-
+@property (strong, nonatomic) Deck *deck;
 @end
 
 @implementation ViewController
+// I don't understand why I would need to create a deck and then tell it to be a playing card deck, why can't I just create a playingcard deck.
+- (Deck *)deck {
+    if (!_deck) _deck = [self createDeck];
+    return _deck;
+}
+
+- (Deck *)createDeck{
+    return [[PlayingCardDeck alloc] init];
+}
 
 -(void)setFlipCount:(int)flipCount {
     _flipCount = flipCount;
@@ -27,11 +38,16 @@
                           forState:UIControlStateNormal];
         [sender setTitle:@"" forState:UIControlStateNormal];
     } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardFront"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:@"A♣︎" forState:UIControlStateNormal];
+        
+        Card *cardDrawn = [self.deck drawRandomCard];
+        if(cardDrawn){
+            [sender setBackgroundImage:[UIImage imageNamed:@"cardFront"]
+                              forState:UIControlStateNormal];
+            [sender setTitle:cardDrawn.contents forState:UIControlStateNormal];
+            self.flipCount++;
+        }
     }
-    self.flipCount++;
+    
     
 }
 
