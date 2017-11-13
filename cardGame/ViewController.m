@@ -17,7 +17,7 @@
 @end
 
 @implementation ViewController
-// I don't understand why I would need to create a deck and then tell it to be a playing card deck, why can't I just create a playingcard deck.
+// I don't understand why I would need to create a deck and then tell it to be a playing card deck, why can't I just create a playingcard deck since it inherits from deck?
 - (Deck *)deck {
     if (!_deck) _deck = [self createDeck];
     return _deck;
