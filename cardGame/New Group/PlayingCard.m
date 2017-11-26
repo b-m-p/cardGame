@@ -45,6 +45,7 @@
 -(NSString *)suit {
     return _suit ? _suit : @"?";
 }
+
 // not including this in the header files makes it private:
 +(NSArray *)rankStrings {
     return @[@"?", @"A", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"J", @"Q", @"K"];

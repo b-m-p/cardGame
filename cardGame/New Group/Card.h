@@ -16,7 +16,7 @@
 @property (nonatomic, getter=isChosen) BOOL chosen;
 @property (nonatomic, getter=isMatched) BOOL matched;
 
--(int)match:(NSArray *)otherCards;  // declare a public method (public because in header file) called match: that takes one argument which is a pointer to a Card
+-(int)match:(NSArray *)otherCards;  // declare a public method (public because in header file) called match: that takes one argument which is a pointer to a Card - otherCards is an array of Cards.  
 
 
 @end
