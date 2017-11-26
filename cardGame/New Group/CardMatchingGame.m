@@ -64,25 +64,24 @@
          card.chosen = NO;
         }else {
         // match against other chosen cards searching for the cards marked as chosen and unmatched -- how would this work if matching against more than one card?
-        for (Card *otherCard in self.cards) {
-            if (otherCard.isChosen && !otherCard.isMatched) {
-                int matchScore = [card match:@[otherCard]];
-                if (matchScore) {
-                    self.score += matchScore * MATCH_BONUS;
-                    otherCard.matched = YES;
-                    card.matched = YES;
-                } else {
-                    self.score -= MISMATCH_PENALTY;
-                    otherCard.chosen = NO; // how would this look if matching more than one card?
+            for (Card *otherCard in self.cards) {
+                if (otherCard.isChosen && !otherCard.isMatched) {
+                    int matchScore = [card match:@[otherCard]];
+                    if (matchScore) {
+                        self.score += matchScore * MATCH_BONUS;
+                        otherCard.matched = YES;
+                        card.matched = YES;
+                    } else {
+                        self.score -= MISMATCH_PENALTY;
+                        otherCard.chosen = NO; // how would this look if matching more than one card?
+                    }
+                    break; // at this point we are only matching two cards
                 }
-                break; // at this point we are only matching two cards
             }
-        }
         self.score -= COST_TO_CHOOSE;
         card.chosen = YES;
+        }
     }
 }
-
-
 
 @end
